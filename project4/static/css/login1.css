@@ -1,0 +1,253 @@
+/* Reset and general styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container-wrapper {
+    position: relative;
+    width: 70%;
+    max-width: 1200px;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #144da8;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 0;
+}
+
+/* Animation shapes */
+.animation-element, .animation-element-2 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #5b7dc5;
+    animation: animate-element 2s ease-in-out infinite;
+}
+
+.animation-element {
+    top: -50px;
+    left: -50px;
+    animation-delay: 0s;
+}
+
+.animation-element-2 {
+    background-color: #d2e1d8;
+    bottom: -50px;
+    right: -50px;
+    animation-delay: 1s;
+}
+
+@keyframes animate-element {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1);
+    }
+    
+}
+
+/* Form Box */
+.form-box-login {
+    width: 100%;
+    max-width: 450px;   
+    padding: 50px;
+    background-color: #faf3f0;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-title-animation {
+    font-size: 32px;
+    font-weight: bold;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #144da8;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+    text-shadow: 1px 2px 2px black;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Input Fields */
+.input-field-animation {
+    position: relative;
+    color: #333;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+.input-field-animation input {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #144da8;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+.input-field-animation input:focus {
+    border-color: #319cb5;
+}
+
+.input-field-animation label {
+    position: absolute;
+    top: 0.5px;
+    left: 1px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: #144da8;
+    font-size: 14px;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.input-field-animation input:focus + label {
+    top: -10px;
+    left: 1px;
+    font-size: 14px;
+    color: #144da8;
+}
+
+.input-field-animation i {
+    position: absolute;
+    display: inline;
+    top: 50%;
+    right: 15px;    
+    transform: translateY(-50%);
+    color: #144da8;
+    font-size: 18px;
+}
+
+/* Submit Button */
+.submit-btn-animation {
+    width: 100%;
+    padding: 15px;
+    background-color: #144da8;
+    border: none;
+    color: #faf3e0;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 35px;
+    cursor: pointer;    
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn-animation:hover {
+    background-color: #0056b3;
+}
+
+/* Option Link */
+.option-animation {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #b53131;
+    animation: fadeIn 1s ease-out;
+}
+
+.option-animation p {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+
+    font-size: 16px;
+}
+
+.option-animation a {
+    display: inline-block;
+    margin-top: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 16px;
+    font-style: oblique; 
+    text-decoration: none;
+    color: #144da8;
+    font-weight: bold;
+}
+
+.option-animation a:hover {
+    text-decoration: underline;
+}
+
+/* Info Text - Updated */
+.info-text-login {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+    animation: fadeIn 1s ease-out;
+   
+}
+
+.info-text-login .info-text-animation {
+    font-size: 30px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: oblique;
+    font-weight: bold;
+    color: #ffebd0;
+    text-shadow: 1px 1.5px 1px #faf3e0;
+}
+
+.info-text-login p {
+    font-size: 18px !important;
+    font-family:'Courier New', Courier, monospace  !important;  
+    margin-top: 10px;
+    text-shadow: none !important;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .container-wrapper {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .form-box-login, .info-text-login {
+        max-width: 100%;
+    }
+
+    .form-title-animation {
+        font-size: 28px;
+    }
+
+    .input-field-animation input {
+        font-size: 14px;
+    }
+
+    .submit-btn-animation {
+        font-size: 16px;
+    }
+
+    /* Ensure info text doesn't overlap with form */
+    .info-text-login {
+        margin-top: 20px;
+    }
+}

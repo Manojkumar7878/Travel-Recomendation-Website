@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HumBus Travels </title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'mylogo/Manoj.png' %}" >
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    
+<!--     
+    <link  
+      rel="stylesheet"
+      href="{% static 'bootstrap/bootstrap-5/css/bootstrap.min.css' %}"
+    /> -->
+  </head>
+
+  <body>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <!-- Navbar section -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <!-- Brand Logo -->
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'logo/logo_header.png' %}" alt="Bus Logo" width="50" />
+          <span>HUMBUS TRAVELS</span>
+        </a>
+    
+        <!-- Toggler Button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Navbar Collapse -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <!-- Navigation Links -->
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index1' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'booking' %}">Book Ticket</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'place_list' %}">Routes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'help' %}">Help</a>
+            </li>
+    
+            <!-- Account Dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                href="#"
+              >
+                {% if user.is_authenticated %}
+                  <span class="me-2">{{ user.username }}</span>
+                {% endif %}
+                Account
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% if request.user.is_authenticated %}
+                  <li>
+                    <form action="{% url 'logout' %}" method="POST">
+                      {% csrf_token %}
+                      <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    </form>
+                  </li>
+                {% else %}
+                  <li>
+                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'signup' %}">Signup</a>
+                  </li>
+                {% endif %}
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    {% block content %}
+    
+    <!-- Carousel Section -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'img/newbus.jpg' %}" class="d-block w-100"/>
+        </div>
+        <!-- search bus -->
+        <div class="container booking-section p-4 "> 
+          <form class="row g-3" action="booking1" id="search">
+            {% csrf_token %}
+            <div class="col-md-3 position-relative">
+              <label for="source" class="floating-label">Source</label>
+              <input type="text" class="form-control input-animate" id="source" placeholder="Enter Source" required/>
+            </div>
+            <div class="col-md-3 position-relative">
+              <label for="destination" class="floating-label">Destination</label>
+              <input type="text" class="form-control input-animate" id="destination" placeholder="Enter Destination" required/>
+            </div>
+            <div class="col-md-2 positive-relative">
+              <label for="travelDate" class="floating-label">Departure Date</label>
+              <input type="date" class="form-control input-animate" id="travelDate" required/>
+            </div>
+            <div class="col-md-2 position-relative">
+              <label for="returnDate" class="floating-label">Return Date</label>
+              <input type="date" class="form-control input-animate" id="returnDate"/>
+            </div>
+            <div class="col-md-2 text-center">
+              <input type="submit" class="link-button" value="search bus">
+            </div>
+          </form>
+        </div>
+      </div>  
+    <!-- Travel Motivation Section -->
+    <div class="container text-center travel-motivation py-5 ">
+      <h2><i class="bi bi-emoji-wink-fill">Make Your Travel With Us</i></h2>
+      <p class="mt-3"><i class="bi bi-emoji-laughing-fill">Travelling slows aging and boosts your health and it is the most powerful way of self-healing.</i></p>
+      <h6 class="mt-3"><i class="bi bi-emoji-sunglasses-fill">Travel more, wrinkle less</i></h6>
+    </div>
+    <!-- Travel Motivation Section Ends -->
+<!--features starts-->
+  <div class="feature">
+    <h2>Features</h2>
+    <div class="feature-section">
+      <div class="row gy-4">
+        <div class="col-md-4">
+          <a href="#" class="text-decoration-none">
+            <div class="feature-card">
+              <img src="{% static 'travel img/output (7).jpg' %}" alt="Perfection in Travel" />
+              <h5>Perfection In Travel</h5>
+              <p>Ensuring top-class travel experiences.</p>
+            </div>
+          </a>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="feature-card">
+            <img src="{% static 'travel img/output (8).jpg' %}" alt="24x7 Customer Support" />
+            <h5>24x7 Customer Support</h5>
+            <p>Dedicated customer support facility provided.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-card">
+            <img src="{% static 'travel img/output (9).jpg' %}" alt="All Cards Accepted" />
+            <h5>All Cards Accepted</h5>
+            <p>All major credit and debit cards are accepted.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-card">
+            <img src="{% static 'travel img/output (10).jpg' %}" alt="Brand New Coaches" />
+            <h5>Brand New Coaches</h5>
+            <p>All our vehicles are brand new facilities.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-card">
+            <img src="{% static 'travel img/realtime_ Net Banking & Wallets_images hd 08-02-2025 at 13-32-08.jpeg' %}" alt="Net Banking & Wallets" />
+            <h5>Net Banking & Wallets</h5>
+            <p>All net banking and all major wallets are supported.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="feature-card">
+            <img src="{% static 'travel img/tamilnadu Live Tracking bus route _images hd 08-02-2025 at 13-30-54.jpeg' %}" alt="Live Tracking" />
+            <h5>Live Tracking</h5>
+            <p>All our vehicles are live tracking enabled.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!--features ends-->
+
+<!--achievement starts-->
+  <div class="con p-4">
+    <div class="header">Our Growing Numbers</div>
+      <div class="stats">
+        <div class="stat-card">
+            <img src="{% static 'img/android.png' %}" alt="Android">
+            <div class="label">Downloaded</div>
+            <div class="value" id="android-downloads"></div>
+        </div>
+        <div class="stat-card">
+            <img src="{% static 'img/apple-logo.png' %}" alt="apple">
+            <div class="label">Downloaded</div>
+            <div class="value" id="apple-downloads"></div>
+        </div>
+        <div class="stat-card">
+            <img src="{% static 'img/chrome.png' %}" alt="Visitors">
+            <div class="label">Visitors</div>
+            <div class="value" id="visitors"></div>
+        </div>
+      </div>
+  </div>
+      
+    <section class="testimonials py-5">
+      <div class="container text-center">
+        <h2 class="section-title">Our Wonderful Testimonials</h2>
+        <p class="section-subtitle">What our happy customers say about us</p>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <img
+                src="{%static 'img/output (1).jpg' %}"
+                alt="Customer"
+                class="testimonial-img"
+              />
+              <p class="testimonial-text">
+                "Excellent service! The buses are clean and well-maintained. I
+                had a comfortable journey."
+              </p>
+              <h5 class="testimonial-name">- Aravind Kumar</h5>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <img
+                src="{% static 'img/output (2).jpg' %}"
+                alt="Customer"
+                class="testimonial-img"
+              />
+              <p class="testimonial-text">
+                "Live tracking feature was very helpful. The booking process was
+                smooth and hassle-free!"
+              </p>
+              <h5 class="testimonial-name">- Priya Sharma</h5>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <img
+                src="{% static 'img/output.jpg' %}"
+                alt="Customer"
+                class="testimonial-img"
+              />
+              <p class="testimonial-text">
+                "Luxury sleeper coaches are top-notch! Will definitely book
+                again for my next trip."
+              </p>
+              <h5 class="testimonial-name">- Suresh Reddy</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--achievement ends-->
+{% endblock %}
+
+
+
+<!--footer starts-->
+<footer class="bg-dark text-white text-center p-4 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Connect With Us</h5>
+        <p>HumBus Travels, 22/6, Chennai, Main Road, Tamil Nadu.</p>
+        <p>Email: <a href="mailto:humbustravels@gmail.com">humbustravels@gmail.com</a></p>
+        <p>Phone: <a href="tel:+1 234 567 890">+1 234 567 890</a></p>
+      </div>
+      <div class="col-md-4">
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="{% url 'index1' %}">Home</a></li>
+          <li><a href="{% url 'booking' %}">Book Ticket</a></li>
+          <li><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="{% url 'help' %}">Help</a></li>
+          <li><a href="{% url 'hire_bus' %}">Hire Bus</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Support Links</h5>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Cancellation & Refund Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="{% url 'help' %}">Feedback</a></li>
+          <li><a href="#">Agent Registration</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider" />
+    <p>&copy; 2025. All Rights Reserved. Designed & Maintained by Manoj</p>
+  </div>
+</footer>
+<script src="{% static 'js/script1.js' %}" defer></script>
+
+<script>
+  // List of routes
+  const routes = ["Chennai", "Coimbatore", "Madurai", "Palani", "Salem", "Thanjavur"];
+
+  // Function to enable autocomplete
+  function enableAutocomplete(inputId, suggestions) {
+    const inputElement = document.getElementById(inputId);
+
+    inputElement.addEventListener("input", function () {
+      const listId = inputId + "-list";
+      const value = this.value.toLowerCase();
+      let list = document.getElementById(listId);
+
+      // Remove old suggestions
+      if (list) {
+        list.remove();
+      }
+
+      if (!value) return;
+
+      // Create a new suggestion list
+      list = document.createElement("div");
+      list.id = listId;
+      list.className = "autocomplete-list";
+      list.style.position = "absolute";
+      list.style.zIndex = "1000";
+      list.style.background = "white";
+      list.style.border = "1px solid #ccc";
+
+      // Add matching suggestions
+      suggestions
+        .filter((route) => route.toLowerCase().startsWith(value))
+        .forEach((route) => {
+          const item = document.createElement("div");
+          item.textContent = route;
+          item.style.padding = "5px";
+          item.style.cursor = "pointer";
+          item.addEventListener("click", function () {
+            inputElement.value = route;
+            list.remove();
+          });
+          list.appendChild(item);
+        });
+
+      // Append the list to the input's parent
+      this.parentNode.appendChild(list);
+    });
+
+    document.addEventListener("click", function (e) {
+      if (e.target.id !== inputId) {
+        const list = document.getElementById(inputId + "-list");
+        if (list) list.remove();
+      }
+    });
+  }
+
+  // Enable autocomplete for both source and destination fields
+  enableAutocomplete("source", routes);
+  enableAutocomplete("destination", routes);
+
+  // Generate random numbers within specified ranges
+  function generateRandomValue(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  // Set the dynamic values
+  document.getElementById('android-downloads').textContent = generateRandomValue(2900000, 3000000).toLocaleString() + "+";
+  document.getElementById('apple-downloads').textContent = generateRandomValue(200000, 300000).toLocaleString() + "+";
+  document.getElementById('visitors').textContent = generateRandomValue(2500000000, 2600000000).toLocaleString();
+</script>
+</body>
+</html>

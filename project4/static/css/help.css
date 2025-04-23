@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/help-hero.jpg') center/cover;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+} */
+/*navbar ends*/
+/*header starts*/
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-section h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.hero-section p {
+    font-size: 18px;
+    font-weight: 300;
+}
+/*header ends*/
+/*qns and ans*/
+.accordion-button {
+    font-weight: 600;
+    background: #f8f9fa;
+    color: #333;
+    transition: background 0.3s ease-in-out;
+}
+
+.accordion-button:hover {
+    background: #1d3557;
+    color: white;
+}
+
+.accordion-collapse {
+    transition: 0.4s ease-in-out;
+}
+/*qns and ans*/
+/* Footer */
+
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+    .hero-section {
+        height: 250px;
+    }
+
+    .hero-section h1 {
+        font-size: 30px;
+    }
+
+    .hero-section p {
+        font-size: 16px;
+    }
+
+    .real-time-booking h2 {
+        font-size: 28px;
+    }
+
+    .real-time-booking p {
+        font-size: 16px;
+    }
+
+    .booking-form {
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 200px;
+        padding: 30px 15px;
+    }
+
+    .hero-section h1 {
+        font-size: 26px;
+    }
+
+    .hero-section p {
+        font-size: 14px;
+    }
+
+    .real-time-booking h2 {
+        font-size: 24px;
+    }
+
+    .real-time-booking p {
+        font-size: 14px;
+    }
+
+    .booking-form {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .booking-form input {
+        font-size: 14px;
+    }
+
+    .booking-form .btn-primary {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        height: 180px;
+        padding: 20px;
+    }
+
+    .hero-section h1 {
+        font-size: 22px;
+    }
+
+    .hero-section p {
+        font-size: 12px;
+    }
+
+    .real-time-booking {
+        padding: 40px 15px;
+    }
+
+    .real-time-booking h2 {
+        font-size: 22px;
+    }
+
+    .real-time-booking p {
+        font-size: 12px;
+    }
+
+    .booking-form {
+        padding: 15px;
+    }
+
+    .booking-form input {
+        font-size: 12px;
+    }
+
+    .booking-form .btn-primary {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 10px;
+    }
+}

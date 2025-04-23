@@ -1,0 +1,142 @@
+{% extends 'index1.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Ticket - Bus Booking TN</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="Manoj.png" >
+    <link rel="stylesheet" href="{% static 'css/booking1.css' %}">
+</head>
+<body>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+<!--booking starts-->
+<div>
+    <div class="container booking-form mt-5">
+        <h2 class="text-center">Book Your Ticket <i class="bi bi-ticket-detailed"></i></h2>
+        <form id="ticketForm" class="row g-3 mt-4" action="mybooking" method="POST">
+            {% csrf_token %}
+            <div class="col-md-6 from">
+                <label class="form-label">From</label>
+                <input type="text" class="form-control" id="fromCity" name="departure" placeholder="Enter Departure City" required>
+            </div>
+            <div class="col-md-6 from">
+                <label class="form-label">To</label>
+                <input type="text" class="form-control" id="toCity" name="arraival" placeholder="Enter Destination City" required>
+            </div>
+            <div class="col-md-6 from">
+                <label class="form-label">Date of Travel</label>
+                <input type="date" class="form-control" id="travelDate" name="date" required>
+            </div>
+            <div class="col-md-6 from">
+                <label class="form-label">Time</label>
+                <input type="time" class="form-control" id="travelTime" name="time" required>
+            </div>
+            <div class="col-md-6 from">
+                <label class="form-label">Seat Number</label>
+                <input type="text" class="form-control" id="seatNumber" name="seat" placeholder="Enter Seat Number" required>
+            </div>
+            <div class="col-md-6 from">
+                <label class="form-label">Passenger Name</label>
+                <input type="text" class="form-control" id="passengerName" name="name" placeholder="Enter Your Name" required>
+            </div>
+            <div class="col-12 text-center mt-3">
+                <input type="submit" value="Book Ticket" class="btn btn-primary btn-block"> 
+            </div>
+        </form>
+    </div>
+
+<!--booking ends-->
+<!--ticket details starts-->
+   
+    <div class="col-md-4 content">
+        {% if datas %}
+        <h3 class="page-header text-primary text-center">View Details</h3>
+        <table class="table table-bordered  ">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Depature</th>
+                    <th>Arraival</th>
+                    <th>Date </th>
+                    <th>Time</th>
+                    <th>Seat Number</th>
+                    <th>Passenger Name</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            {% for data in datas %}
+            <tbody>
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{ data.starting }}</td>
+                    <td>{{ data.destination }}</td>
+                    <td>{{ data.date }}</td>
+                    <td>{{ data.time }}</td>
+                    <td>{{ data.seat }}</td>
+                    <td>{{ data.name }}</td>                    
+                    <td><a class="btn btn-primary" href="updateData/{{data.id}}">Update</a></td>
+                    <td><a class="btn btn-danger" href="deleteData/{{data.id}}">Cancel</a></td>                    
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+    <div>
+        <h3 class="page-header text-primary text-center">Booking List</h3>
+        <div id="bookingList" class="booking-list">
+            
+            <!-- Booking cards will be dynamically added here -->
+        </div>
+    </div>
+    <!--ticket details ends-->
+</div>
+<script>
+
+        document.getElementById("ticketForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const fromCity = document.getElementById("fromCity").value;
+            const toCity = document.getElementById("toCity").value;
+            const travelDate = document.getElementById("travelDate").value;
+            const travelTime = document.getElementById("travelTime").value;
+            const seatNumber = document.getElementById("seatNumber").value;
+            const passengerName = document.getElementById("passengerName").value;
+
+            const bookingCard = 
+                <div class="booking-card">
+                    <div class="booking-details">
+                        <h4>${fromCity} → ${toCity}</h4>
+                        <p><strong>Date:</strong> ${travelDate}</p>
+                        <p><strong>Time:</strong> ${travelTime}</p>
+                        <p><strong>Seat No:</strong> ${seatNumber}</p>
+                        <p><strong>Passenger:</strong> ${passengerName}</p>
+                        <p><strong>Status:</strong> <span class="confirmed">Confirmed</span></p>
+                    </div>
+                    <div class="booking-actions">
+                        <button class="btn btn-success"><i class="bi bi-printer"></i> Print</button>
+                        <button class="btn btn-primary"><i class="bi bi-cloud-download"></i> Download</button>
+                        <button class="btn btn-danger" onclick="this.parentElement.parentElement.remove()">
+                            <i class="bi bi-x-circle"></i> Cancel
+                        </button>
+                    </div>
+                </div>
+            ;
+
+            document.getElementById("bookingList").innerHTML += bookingCard;
+
+            document.getElementById("ticketForm").reset();
+        });
+
+</script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'index1.html' %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+    <title>Update</title>
+</head>
+<body>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+
+        <div class="form-group text-center mt-5">
+            <form action="/updateData/{{data.id}}" method="POST" class="form-horizontal">
+                {% csrf_token %}
+                <h3 class="page-header text-center">Update Details</h3>
+                <div class="form-group">
+                    <label for="depature" class="control-label">Depature</label>
+                    <input type="text" name="departure" class="form-control" value="{{data.starting}}">
+                </div>
+                <div class="form-group">
+                    <label for="arraival" class="control-label">Arraival</label>
+                    <input type="text" name="arraival" class="form-control" value="{{data.destination}}">
+                </div>
+                <div class="form-group">
+                    <label for="date" class="control-label">Date of Travel</label>
+                    <input type="date" name="date" class="form-control" value="{{data.date}}">
+                </div>
+                <div class="form-group">
+                    <label for="time" class="control-label">Time</label>
+                    <input type="time" name="time" class="form-control" value="{{data.time}}">
+                </div>
+                <div class="form-group">
+                    <label for="seat" class="control-label">Seat Number</label>
+                    <input type="text" name="seat" class="form-control" value="{{data.seat}}">
+                </div>
+                <div class="form-group">
+                    <label for="name" class="control-label">Passenger Name</label>
+                    <input type="text" name="name" class="form-control" value="{{data.name}}"> 
+                </div>
+                    <input type="submit" name="id" class="btn btn-primary" value="update">
+                    <input type="button" name="id" class="btn btn-primary" onclick="history.back() " value="Back">
+            </form>
+        </div>
+</body>
+</html>
+
+{% endblock %}

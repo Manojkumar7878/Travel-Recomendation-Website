@@ -1,0 +1,115 @@
+{% extends "index1.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/about1.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/Manoj.png' %}">
+    <title> About Us </title>
+
+    
+</head>
+<body>
+
+
+    
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+<!--header starts-->
+    <header class="about-hero text-center text-white p-4 bg-primary">
+        <h1>About Us</h1>
+        <p> HumBus Travels  - Your Trusted Travel Partner Since 1974</p>
+    </header>
+<!--header ends-->
+<!--our journey starts-->
+    <section class="our-journey container mt-5">
+        <h2 class="text-center">Our Journey</h2>
+        <p>
+            Our founder believed that customer satisfaction is the key to success in the travel and tourism sector.
+            He wanted his company to earn loyal customers and invested heavily in bringing them comfort.
+            His taxi was special in 1967 because of his hospitality to his customers.
+            He never wanted his customers to keep a travel a distant memory.
+            Instead, he wanted it to be a refreshing one and made it available to every passenger who seeks our services.
+        </p>
+    </section>
+
+    <section class="vision-mission container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Our Vision</h3>
+                <p>To be a trendsetter in the tourism and travel industry. To be the behemoth in service excellence. Through exceptional service, we want our customers to realize the value of their money spent and make our brand a household name among satisfied travelers.</p>
+            </div>
+            <div class="col-md-6">
+                <h3>Our Mission</h3>
+                <p>The traditional motto of the company, <strong>'Service before oneself'</strong>, is followed at all levels of management, emphasizing customer comfort at every stage of business. The core of every travel and tourism service is customer satisfaction.</p>
+            </div>
+        </div>
+    </section>
+    <!--our journey ends-->
+<!--reason forchoose us-->
+    <section class="why-choose-us container">
+        <h2 class="text-center">Why Choose Logistify Traveller?</h2>
+        <p class="text-center">We make bus travel easy and hassle-free for thousands of passengers daily. Our platform provides:</p>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h4>Real-Time Booking</h4>
+                <p>Book your bus ticket instantly with live seat availability.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Luxury & Comfort</h4>
+                <p>Enjoy premium seating and AC coaches for a smooth ride.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>24/7 Customer Support</h4>
+                <p>Our support team is always available to assist you.</p>
+            </div>
+        </div>
+    </section>
+    <!--reason for choose us -->
+<!--achievement starts-->
+    <section class="stats  text-center bg-light">
+        <div class="container">
+            <h2>Our Achievements</h2>
+            <div class="row mt-4">
+                <div class="col-md-3">
+                    <h2 class="counter" data-target="500000">0</h2>
+                    <p>Tickets Sold</p>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="counter" data-target="300000">0</h2>
+                    <p>Satisfied Customers</p>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="counter" data-target="5000">0</h2>
+                    <p>Bus Operators</p>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="counter" data-target="10">0</h2>
+                    <p>Years Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--achievement ends-->
+
+<!--address starts-->
+    <section class="connect-with-us ">
+        <h2 class="text-center">Connect With Us</h2>
+        <p class="text-center"><strong>Office:</strong> HumBus Travels, 22/6, Chennai, Main Road, Tamil Nadu.</p>
+        <p class="text-center"><strong>Email:</strong> humbustravels@gmail.com</p>
+        <p class="text-center"><strong>Phone:</strong> +91 9894209876 | +91 8097422285</p>
+    </section>
+<!--address ends-->
+
+
+<!--footer ends-->
+    <script src="{% static 'js/about.js' %}"></script>
+</body>
+</html>
+{% endblock %}

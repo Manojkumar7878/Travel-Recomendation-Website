@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login1.css' %}">
+    <title>Login Page</title>
+</head>
+<body>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <div class="container-wrapper">
+        <span class="animation-element"></span>
+        <span class="animation-element-2"></span>
+        <div class="form-box-login">
+            <h2 class="form-title-animation" style="--i:0;">Login</h2>
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <div class="input-field-animation" style="--i:1;">
+                    <input type="text" name="username" id="" required>
+                    <label for="">Username</label>
+                    <i class="bi bi-person-fill"></i>
+                </div>
+                <div class="input-field-animation" style="--i:2;">
+                    <input type="password" name="password" id="" required>
+                    <label for="">Password</label>
+                    <i class="bi bi-lock-fill"></i>
+                </div>
+                <button type="submit" class="submit-btn-animation" style="--i:3;">Login<i class="bi-door-open-fill"></i></button>
+                <div class="option-animation" style="--i:4;">
+                    <p>Don't have an account? <a href="{% url 'signup' %}" class="register-link">Sign up</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="info-text-login">
+            <h2 class="info-text-animation" style="--i:0;">Welcome Back!<i class="bi bi-emoji-laughing-fill"></i></h2>
+            <p class="info-text-animation" style="--i:1;">Enter your details to login to your account.</p>
+        </div>
+    </div>
+
+</body>
+    <script src="{% static 'js/signup.js' %}"></script>
+    <script>
+        const wrapper = document.querySelector('.container-wrapper');
+        const registerLink = document.querySelector('.register-link');
+        const loginLink = document.querySelector('.login-link');
+        
+        registerLink.onclick = () => {
+            wrapper.classList.add('active');
+        }
+        loginLink.onclick = () => {
+            wrapper.classList.remove('active');
+        }
+    </script>
+</html>
