@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/registration1.css' %}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <div class="form-container">
+        <div class="animation-shapes">
+            <span class="shape-one"></span>
+            <span class="shape-two"></span>
+        </div>
+
+        <div class="form-card register-form">
+            <h2 class="heading animation" style="--i:0;">Create an Account</h2>
+            <form action="{% url 'signup' %}" method="POST">
+                {% csrf_token %}
+                <div class="input-wrapper animation" style="--i:1;">
+                    <input type="text" name="user" id="username" required>
+                    <label for="">Username</label>
+                    <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="input-wrapper animation" style="--i:2;">
+                    <input type="email" name="email" id="email" required>
+                    <label for="">Email Address</label>
+                    <i class="bi bi-envelope-open-fill"></i>
+                </div>
+                <div class="input-wrapper animation" style="--i:3;">
+                    <input type="password" name="passw" id="password" required>
+                    <label for="">Password</label>
+                    <i class="bi bi-lock-fill"></i>
+                </div>
+                <div class="input-wrapper animation" style="--i:4;">
+                    <input type="password" name="pass" id="confirm-password" required>
+                    <label for="">Confirm Password</label>
+                    <i class="bi bi-lock-fill"></i>
+                </div>
+                <button type="submit" class="submit-btn animation" style="--i:5;">Sign Up</button>
+                <div class="login-option animation" style="--i:6;">
+                    <p>Already have an account? <a href="{% url 'login' %}" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="info-card">
+            <h2 class="info-heading animation" style="--i:0;">Start Your Journey with HumBus!</h2>
+            <p class="info-text animation" style="--i:1;">Sign up to book bus tickets effortlessly, and enjoy exclusive deals..</p>
+        </div>
+    </div>
+
+    <script src="{% static 'js/signup.js' %}"></script>
+    <script>
+        const formWrapper = document.querySelector('.form-container');
+        const registerLink = document.querySelector('.login-link');
+        const loginLink = document.querySelector('.login-link');
+
+        registerLink.onclick = () => {
+            formWrapper.classList.add('active');
+        }
+        loginLink.onclick = () => {
+            formWrapper.classList.remove('active');
+        }
+    </script>
+</body>
+</html>

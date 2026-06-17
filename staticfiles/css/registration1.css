@@ -1,0 +1,229 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    padding: 0;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+/* Animation shapes */
+.animation-shapes span {
+    position: absolute;
+    border-radius: 50%;
+    background: #e0e0e0;
+    animation: move-shape 8s infinite ease-in-out;
+}
+
+.shape-one {
+    width: 100px;
+    height: 100px;
+    background: #d2e1d8 !important;
+    top: -50px;
+    left: -50px;
+    animation-delay: 0s;
+}
+
+.shape-two {
+    width: 100px;
+    height: 100px;
+    background: #5b7dc5 !important;
+    top: 200px;
+    right: -100px;
+    animation-delay: 4s;
+}
+
+@keyframes move-shape {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(50px, 50px); }
+    50% { transform: translate(100px, 0); }
+    75% { transform: translate(50px, -50px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Form styling */
+.register-form {
+    background: #144da8;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 50%;
+}
+
+.info-card {
+    width: 50%;
+}
+
+h2.heading {
+    text-align: center;
+    font-size: 24px;
+    color: #faf3f0;
+    margin-bottom: 20px;
+    text-shadow: 1px 2px 1px black;
+}
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 4px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #000000;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+.input-wrapper input:focus {
+    border-color: black;
+}
+
+.input-wrapper label {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-size: 15px;
+    color: #144da8;
+    transition: 0.3s ease;
+}
+
+.input-wrapper input:focus + label,
+.input-wrapper input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 8px;
+    font-size: 14px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-style: oblique;
+    color: #faf3f0;
+}
+
+.input-wrapper i {
+    position: absolute;
+    right: 12px;
+    top: 14px;
+    color: #faf3f0;
+}
+
+/* Button styling */
+.submit-btn {
+    background: #faf3f0;
+    color: #144da8;
+    padding: 12px;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-size: 19px;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Link styling */
+.login-option {
+    margin-top: 12px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: bold;
+    color: #44f66acd;
+}
+
+.login-option a {
+    text-decoration: none;
+    color: greenyellow;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+.login-option a:hover {
+    text-decoration: underline;
+}
+
+/* Info card styles */
+.info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #faf3f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-card .info-heading {
+    font-size: 25px;
+    color: #144da8;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 1px 2px 2px #000000;
+}
+
+.info-card .info-text {
+    color: #144da8;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 15px;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    text-align: center;
+    line-height: 1.5;
+
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .register-form,
+    .info-card {
+        width: 80%;
+        margin-bottom: 30px;
+    }
+}
+
+/* Animation classes */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.animation {
+    animation: fadeIn 1s ease-out;
+}
+
+.animation:nth-child(1) { animation-delay: 0s; }
+.animation:nth-child(2) { animation-delay: 0.2s; }
+.animation:nth-child(3) { animation-delay: 0.4s; }
+.animation:nth-child(4) { animation-delay: 0.6s; }
+.animation:nth-child(5) { animation-delay: 0.8s; }
+.animation:nth-child(6) { animation-delay: 1s; }
+

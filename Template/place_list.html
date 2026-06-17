@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/place_list1.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Place List</title>
+
+</head>
+<body class="popular-routes">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <!-- Brand Logo -->
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'logo/logo_header.png' %}" alt="Bus Logo" width="50" />
+          <span>HUMBUS TRAVELS</span>
+        </a>
+    
+        <!-- Toggler Button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Navbar Collapse -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <!-- Navigation Links -->
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index1' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'hire_bus' %}">Hire Bus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'help' %}">Help</a>
+            </li>
+            <!-- Account Dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                href="#">
+                {% if user.is_authenticated %}
+                  <span class="me-2">{{ user.username }}</span>
+                {% endif %}
+                Account
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% if request.user.is_authenticated %}
+                  <li>
+                    <form action="{% url 'logout' %}" method="POST">
+                      {% csrf_token %}
+                      <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    </form>
+                  </li>
+                {% else %}
+                  <li>
+                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'signup' %}">Signup</a>
+                  </li>
+                {% endif %}
+              </ul>
+            </li>
+          </ul>
+        </ul>
+    
+          <!-- Search Form -->
+        </div>
+      </div>
+    </nav>
+    <h1 class="section-title">Our popular-routes</h1>
+    <div class="row">
+              {% for place in places %}
+        <div class="col-md-4 col-sm-6">
+            <div class="route-card">
+              <img src="{{ place.image.url }}" alt="Image of {{ place.name }}">
+                <div>
+                    <h5>{{ place.title }}</h5>
+                    <p>{{ place.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <footer class="bg-dark text-white text-center p-4 mt-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h5>Connect With Us</h5>
+              <p>HumBus Travels, 22/6, Chennai, Main Road, Tamil Nadu.</p>
+              <p>Email: <a href="mailto:humbustravels@gmail.com">humbustravels@gmail.com</a></p>
+              <p>Phone: <a href="tel:+919894209876">+91 9894209876</a></p>
+            </div>
+            <div class="col-md-4">
+              <h5>Quick Links</h5>
+              <ul class="footer-links">
+                <li><a href="{% url 'index1' %}">Home</a></li>
+                <li><a href="{% url 'booking' %}">Book Ticket</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'help' %}">Help</a></li>
+                <li><a href="#">Ticket Price</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h5>Support Links</h5>
+              <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Cancellation & Refund Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Feedback</a></li>
+                <li><a href="#">Agent Registration</a></li>
+              </ul>
+            </div>
+          </div>
+          <hr class="footer-divider" />
+          <p>&copy; 2025. All Rights Reserved. Designed & Maintained by Manoj</p>
+        </div>
+    </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</html>
+
+
+

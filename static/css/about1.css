@@ -1,0 +1,184 @@
+
+/*about starts*/
+.about-hero {
+    background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.8)), url('images/about-hero.jpg') center/cover;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+}
+
+.about-hero h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.about-hero p {
+    font-size: 18px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+/*about ends*/
+/*detais*/
+.our-journey,
+.vision-mission,
+.why-choose-us,
+.connect-with-us {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    transition: transform 0.3s ease-in-out;
+}
+.our-journey:hover {
+    transform: translateY(-5px);
+    background-color: #69b9e7;
+}
+.vision-mission:hover{
+    transform: translateY(-5px);
+    background-color: #64b6e6;
+}
+.why-choose-us:hover{
+    transform: translateY(-5px);
+    background-color: #64cae6;
+}
+
+h2 {
+    color: #571d1d;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+}
+
+h3 {
+    color: #457b9d;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.why-choose-us .row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.why-choose-us h4 {
+    color: #e63946;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.stats {
+    background: #f1f1f1;
+    padding: 50px 0;
+}
+
+.stats h2 {
+    color: #1d3557;
+    margin-bottom: 30px;
+}
+
+.counter {
+    font-size: 40px;
+    font-weight: bold;
+    color: #e63946;
+}
+
+.stats p {
+    font-size: 18px;
+    font-weight: 600;
+}
+/*details*/
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-in-out forwards;
+}
+
+@media (max-width: 1024px) {
+    .about-hero h1 {
+        font-size: 35px;
+    }
+    .about-hero p {
+        font-size: 16px;
+    }
+    
+    .why-choose-us .row {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .about-hero h1 {
+        font-size: 30px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .our-journey,
+    .vision-mission,
+    .why-choose-us,
+    .connect-with-us {
+        padding: 30px;
+    }
+
+    .counter {
+        font-size: 30px;
+    }
+
+    .stats p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-hero {
+        padding: 50px 10px;
+    }
+
+    .about-hero h1 {
+        font-size: 25px;
+    }
+
+    .about-hero p {
+        font-size: 14px;
+    }
+
+    .our-journey,
+    .vision-mission,
+    .why-choose-us,
+    .connect-with-us {
+        padding: 20px;
+    }
+
+    .counter {
+        font-size: 24px;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 15px;
+    }
+}

@@ -1,0 +1,602 @@
+.logo {
+    background-color: #000000; /* Vibrant coral shade */
+    width: 200px;
+    border-radius: 10px; /* Adding rounded edges for a modern look */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevents scrolling */
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #f0f8ff; /* Light, clean background */
+
+}
+
+/* Navbar */
+.navbar {
+    margin: 1px;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    overflow: visible;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1;
+    background: linear-gradient( #fffcef, #e9e9ea); /* Gradient for modern appeal */
+    border-radius: 10px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.container{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+    border-radius: 50%; /* Round the logo image */
+  
+}
+.navbar-brand img:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 2px 10px 10px rgba(10, 63, 255, 0.2);
+}
+
+.navbar-nav .nav-link {
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 15px;
+    color: #5c899d; /* White text for contrast */
+    text-transform: uppercase;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #2f00ff; /* Bright gold on hover */
+    text-shadow: 0 2px 10px rgba(0, 47, 255, 0.7); /* Glow effect */
+}
+
+/* Style for the Account dropdown in the navbar */
+.navbar .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Position below the button */
+    left: 0;
+    z-index: 1050;  /* Make sure dropdown appears on top of other elements */
+    background-color: #4f79d3;
+    border: 2px solid #a1de8a;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Disable style for "Welcome, user" item */  
+  /* Hover effect on dropdown items */
+.navbar .dropdown-menu .dropdown-item:hover {
+    background-color: #f1f1f1;
+    color: #007bff;
+    border-radius: 6px;
+  }
+  
+  /* Divider style */
+.dropdown-divider {
+    margin: 0.5rem 0;
+    border: 3px solid #ddd;
+  }
+  
+  /* Animation for the dropdown (fade-in effect) */
+  .dropdown-menu {
+    animation: fadeIn 0.3s ease-in-out;
+
+  }
+  /* Make the dropdown menu appear above the Account button */
+.navbar .dropdown-menu {
+    top: 100%;
+    bottom: auto;
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Optional: Make Account button more prominent when hovered */
+  .nav-link.dropdown-toggle:focus,
+  .nav-link.dropdown-toggle:hover {
+    color: #0056b3;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+  }
+  
+
+
+/* Hover effects */
+.container span {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #0c1770;
+    font-weight: bold;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container span:hover {
+    color: #002aff; /* Gold text on hover */
+    transition: transform 0.3s ease-in-out;
+    text-shadow: 0 3px 5px rgba(0, 60, 255, 0.534); /* Enhanced hover shadow */
+}
+
+#navbarNav li a:hover {
+    color: #1b33e7; /* Gold text on hover */
+    transition: transform 0.3s ease-in-out;
+    text-shadow: 0 3px 5px rgba(0, 60, 255, 0.416); /* Enhanced hover shadow */
+
+}
+/* Carousel Styling */
+/* Carousel Styling */
+.carousel-inner {
+ /* Space for fixed navbar */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+.carousel-item img {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 500px;
+    width: 70px; /* Adjust for better responsiveness */
+    object-fit: cover;
+    border-radius: 10px;
+}
+/* Booking Section */
+.booking-section {
+    border-radius: 15px;
+    backdrop-filter: blur(0);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    background: linear-gradient( #d4f1f4, #80b1c7); 
+    padding: 15px;
+    margin: 200px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.booking-section:hover {
+    transform: scale(1.03);
+    background: linear-gradient( #d4f1f4, #80b1c7);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* Light blue background on hover */
+    box-shadow: 0 15px 40px 20px rgba(0, 0, 0, 0.25);
+}
+
+#search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+#search:hover{
+    background: linear-gradient( #d4f1f4, #80b1c7);
+}
+
+.input-animate {
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background: rgba(33, 82, 217, 0.7);
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+}
+
+.floating-label {
+    position: static;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    padding: 0 5px;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: #1111d4;
+    transition: all 0.3s ease-in-out;
+}
+
+.input-animate:focus {
+    border-color: #ffffff;
+    box-shadow: 0px 0px 8px rgba(241, 241, 241, 0.6);
+}
+
+.input-animate:focus + .floating-label,
+.input-animate:not(:placeholder-shown) + .floating-label {
+    top: 5px;
+    font-size: 13px;
+    color: #d2d2d2;
+}
+
+.link-button {
+    background:#0f70ba;
+    border: none;
+    border-radius: 8px;
+    color: #f7e7ce;
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-decoration:double;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    padding: 8px;
+}
+/* Input Fields with Floating Labels */
+
+
+.travel-motivation{
+    background: linear-gradient( #d4f1f4, #80b1c7); /* Light blue background */
+    padding: 50px 0;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+.travel-motivation h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #007bff; /* Bright blue text */
+    margin-bottom: 20px;
+}
+
+.travel-motivation p {
+    font-size: 15px;
+    color: #00ad31; /* Darker text for contrast */
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.travel-motivation h6 {
+    color: #bcffe3; /* Bright blue link color */
+    text-decoration:wavy;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+/*features starts*/
+.feature{
+    background:white; /* Light blue background */
+    padding: 50px 0;
+    text-align: center;
+}
+.feature h2 {
+    font-size: 30px;
+    font-weight: bold;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: oblique;
+    color: #0800ff; /* Bright blue text */
+    margin-bottom: 20px;
+}
+.feature-section {
+    margin-top: 50px;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    background-color: paleturquoise; /* Light blue background on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.feature-card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.feature-card h5 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #007bff;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+}
+.feature-card h5:hover {
+
+    color: whitesmoke; /* Tomato red on hover */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); /* Glow effect */
+}
+
+.feature-card p {
+    font-size: 15px;
+    color: #555;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+.feature-card p:hover {
+    color: whitesmoke; /* Tomato red on hover */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); /* Glow effect */
+}
+
+/*features ends*/
+
+/*achievement starts*/
+.con {
+    text-align: center;
+    margin-left: 220px;
+    background: #f1f9ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+}
+
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #3e19cf;
+    margin-bottom: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    flex: 1;
+    max-width: 250px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.stat-card .label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.stat-card .value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+}
+/*achievement ends*/
+/*reviews starts*/
+/* Container Styles */
+.testimonials {
+    background-color: #80b1c7;
+    width: 100%;
+    max-width: 1900px;
+    padding: 20px 0;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 30px;
+    color: #faf3f0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-subtitle {
+    font-size: 16px;
+    color: #faf3f0;
+    margin-bottom: 40px;
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+    background: #ffffff;
+    padding: 25px;
+    margin: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover Effects for Testimonial Cards */
+.testimonial-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Testimonial Image */
+.testimonial-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #4caf50;
+}
+
+/* Testimonial Text */
+.testimonial-text {
+    font-size: 15px;
+    color: #616161;
+    font-style: italic;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+/* Testimonial Name */
+.testimonial-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2e7d32;
+    margin-top: 5px;
+}
+
+/*reviews ends*/
+/*footer starts*/
+
+footer {
+    background:#000000; /* Darker shade for background */
+    padding: 40px 0; /* Light text color for contrast */
+    font-size: 14px;
+}
+
+footer h5 {
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #0fcd55; /* Gold color for headings */
+}
+
+footer p {
+    margin: 5px 0;
+    color: #f5f5f5; /* Light text color for paragraphs */
+    line-height: 1.6;
+}
+
+footer a {
+    color: #80b1c7; /* Soft blue for links */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: #ffbf00; /* Golden color on hover */
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #ff6347; /* Tomato red for footer links */
+    font-size: 16px;
+}
+
+.footer-divider {
+    border-top: 3px solid #f0a500; /* Bright orange divider */
+    margin: 15px 0;
+}
+
+/*footer ends*/
+
+
+@media (max-width: 767px) {
+    .col-md-4 {
+        flex: 0 0 50%; /* 2 columns on small screens */
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .col-md-4 {
+        flex: 0 0 100%; /* Single column on very small screens */
+        max-width: 100%;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .navbar-nav .nav-link {
+        font-size: 14px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px;
+    }
+    .navbar-nav .nav-link {
+        font-size: 14px;
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-inner img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-section {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .travel-motivation {
+        padding: 20px;
+    }
+    .travel-motivation h2 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .why-choose-us {
+        text-align: center;
+        padding: 15px;
+    }
+    .why-choose-us h3 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-card {
+        margin-bottom: 20px;
+        padding: 15px;
+    }
+    .feature-card h5 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .route-card {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        text-align: center;
+    }
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+

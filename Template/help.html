@@ -1,0 +1,210 @@
+{% extends "index1.html" %}
+
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & FAQs - Bus Booking TN</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'mylogo/Manoj.png' %}">
+    <link rel="stylesheet" href="{% static 'css/help.css' %}">
+   
+        {% load django_bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        <style>
+            .support-section {
+                max-width: 700px;
+                margin: 20px auto;
+                padding: 20px;
+                background: olive;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            .support-section h2 {
+                text-align: center;
+                color: peachpuff;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                margin-bottom: 20px;
+            }
+            .support-section p{
+                font-family: 'Arial', sans-serif;
+                font-size: 1.2em;
+                color: #000000;
+            }
+            .support-item {
+                margin-bottom: 20px;
+            }
+            .support-item h4 {
+                margin: 0 0 10px;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 1.2em;
+                font-weight: bold;
+                text-decoration: underline;
+                color: rgb(243, 220, 200);
+                border:3.5px double #040402;
+            }
+            .support-item p {
+                margin: 0;
+                font-family: 'Arial', sans-serif;
+                font-size: 1em;
+                text-decoration: dotted;
+                color: #d0e8f5;
+            }
+            .support-item a {
+                color: #1c334b;
+                text-decoration: none;
+            }
+            .support-item a:hover {
+                text-decoration: underline;
+            }
+            .support-item hr {
+                border: 0;
+                height: 2px;
+                background-color: #ccc;
+                margin: 20px 0;
+            }
+            .ticket-form {
+                margin-top: 20px;
+            }
+            .ticket-form h4 {
+                margin-bottom: 15px;
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-weight: bold;
+                font-size: 2em;
+                color: peachpuff;
+            }
+            .ticket-form label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+            .ticket-form input, .ticket-form textarea, .ticket-form button {
+                width: 100%;
+                padding: 5px;
+                margin-bottom: 15px;
+                border: 5px solid rgb(198, 157, 121);
+                border-radius: 5px;
+            }
+            .ticket-form button {
+                background-color: palegoldenrod;
+                color: rgb(30, 43, 46);
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bold;
+                font-size: 16px;
+                cursor: pointer;
+                border: none;
+            }
+        </style>
+
+    
+
+</head>
+<body>
+    <div class="my-5">
+        <h2 class="mb-4">Help & FAQs</h2>
+        <div class="accordion" id="faqAccordion">
+            
+            <!-- FAQ 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqHeading1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                        How can I book a ticket?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        You can book a ticket by entering the source, destination, and travel date in our search system.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqHeading2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                        What payment methods are accepted?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        We accept credit cards, debit cards, UPI payments, and digital wallets.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqHeading3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                        How do I cancel my ticket?
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        You can cancel your ticket by logging into your account and selecting 'Cancel Ticket' from your booking history.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqHeading4">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                        Will I get a refund if I cancel my ticket?
+                    </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" aria-labelledby="faqHeading4" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Refunds depend on the cancellation policy of the bus operator. Check the refund policy before canceling.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Real-Time Booking Section -->
+        <div class="support-section">
+            <h2>Customer Support</h2>
+            <p>If you have any questions or need assistance, please reach out to us through the following channels:</p>
+        <!-- Email Section -->
+            <div class="support-item">
+                <h4>Email Support</h4>
+                <p>Reach us at: <a href="mailto:humbustravles@gmail.com">humbustravles@gmail.com</a></p>
+            </div>
+            <hr>
+
+        <!-- Phone Section -->
+            <div class="support-item">
+                <h4>Phone Support</h4>
+                <p>Call us at: <a href="tel:+1234567890">+1 234 567 890</a></p>
+            </div>
+            <hr>
+        <!-- Support Ticket Form -->
+            <div class="ticket-form">
+                <h4>Submit a Support Ticket</h4>
+                <form action="help1" method="POST">
+                    {% csrf_token %}    
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Describe your issue or question" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}
