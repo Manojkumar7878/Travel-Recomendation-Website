@@ -5,3 +5,5 @@ gunicorn
 whitenoise
 sqlparse==0.5.3
 asgiref==3.8.1
+dj-database-url
+psycopg2-binary
