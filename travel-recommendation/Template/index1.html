@@ -105,28 +105,26 @@
         </div>
         <!-- search bus -->
         <div class="container booking-section p-4 "> 
-          <form class="row g-3" action="booking1" id="search">
+
+          <form class="row g-3" action="{% url 'search_bus' %}" method="GET" id="search">
             {% csrf_token %}
             <div class="col-md-3 position-relative">
               <label for="source" class="floating-label">Source</label>
-              <input type="text" class="form-control input-animate" id="source" placeholder="Enter Source" required/>
+              <input type="text" class="form-control input-animate" id="source" name="source" placeholder="Enter Source" required/>
             </div>
             <div class="col-md-3 position-relative">
               <label for="destination" class="floating-label">Destination</label>
-              <input type="text" class="form-control input-animate" id="destination" placeholder="Enter Destination" required/>
+              <input type="text" class="form-control input-animate" id="destination" name="destination" placeholder="Enter Destination" required/>
             </div>
             <div class="col-md-2 positive-relative">
               <label for="travelDate" class="floating-label">Departure Date</label>
-              <input type="date" class="form-control input-animate" id="travelDate" required/>
-            </div>
-            <div class="col-md-2 position-relative">
-              <label for="returnDate" class="floating-label">Return Date</label>
-              <input type="date" class="form-control input-animate" id="returnDate"/>
+              <input type="date" class="form-control input-animate" id="travelDate" name="date" required/>
             </div>
             <div class="col-md-2 text-center">
               <input type="submit" class="link-button" value="search bus">
             </div>
           </form>
+
         </div>
       </div>  
     <!-- Travel Motivation Section -->

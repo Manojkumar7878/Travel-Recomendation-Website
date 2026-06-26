@@ -1,28 +1,64 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.contrib.auth.hashers import make_password, check_password
-from .models import *
-from django.contrib.auth import logout
+from .models import Datas, Place
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout    
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from .models import Datas, Place, BusRoute
+
+
 
 def home(request):
     return render(request, 'index1.html')
 
+def search_bus(request):
+    source = request.GET.get('source', '').strip()
+    destination = request.GET.get('destination', '').strip()
+    date = request.GET.get('date', '').strip()
 
+    results = []
+
+    if source and destination and date:
+        routes = BusRoute.objects.filter(
+            starting__icontains=source,
+            destination__icontains=destination,
+        )
+        for route in routes:
+            results.append({
+                'route': route,
+                'available_seats': route.available_seats(date),
+                'date': date,
+            })
+
+    return render(request, 'search_result.html', {
+        'results': results,
+        'source': source,
+        'destination': destination,
+        'date': date,
+    })
+
+
+@login_required
 def booking(request):
-    mydata = Datas.objects.all()
+    mydata = Datas.objects.filter(user=request.user)
     return render(request, 'booking_ticket.html', {'datas': mydata})
 
-
+@login_required
 def mybooking(request):
     if request.method == 'POST':
-        departure = request.POST['departure']
-        arraival = request.POST['arraival']
-        date = request.POST['date']
-        time = request.POST['time']
-        seat = request.POST['seat']
-        name = request.POST['name']
+        departure = request.POST.get('departure')
+        arraival = request.POST.get('arraival')
+        date = request.POST.get('date')
+        time = request.POST.get('time')
+        seat = request.POST.get('seat')
+        name = request.POST.get('name')
 
-        obj = Datas(
+        if not all([departure, arraival, date, time, seat, name]):
+            messages.error(request, "All fields are required.")
+            return redirect('booking')
+
+        Datas.objects.create(
+            user=request.user,
             starting=departure,
             destination=arraival,
             date=date,
@@ -30,27 +66,33 @@ def mybooking(request):
             seat=seat,
             name=name,
         )
-        obj.save()
+        messages.success(request, "Booking successful!")
         return redirect('booking')
+    
     return render(request, 'booking_ticket.html')
 
-
+@login_required
 def updateData(request, id):
-    mydata = get_object_or_404(Datas, id=id)
+    mydata = get_object_or_404(Datas, id=id, user=request.user)
+
     if request.method == 'POST':
-        mydata.starting = request.POST['departure']
-        mydata.destination = request.POST['arraival']
-        mydata.date = request.POST['date']
-        mydata.time = request.POST['time']
-        mydata.seat = request.POST['seat']
-        mydata.name = request.POST['name']
+        mydata.starting = request.POST.get('departure', mydata.starting)
+        mydata.destination = request.POST.get('arraival', mydata.destination)
+        mydata.date = request.POST.get('date', mydata.date)
+        mydata.time = request.POST.get('time', mydata.time)
+        mydata.seat = request.POST.get('seat', mydata.seat)
+        mydata.name = request.POST.get('name', mydata.name)
         mydata.save()
+        messages.success(request, "Booking updated successfully!")
         return redirect('booking')
+    
     return render(request, 'update.html', {'data': mydata})
 
+@login_required
 def deleteData(request, id):
-    mydata = get_object_or_404(Datas, id=id)
+    mydata = get_object_or_404(Datas, id=id, user=request.user)
     mydata.delete()
+    messages.success(request, "Booking deleted successfully!")
     return redirect('booking')
 
 def place_list(request):
@@ -62,7 +104,6 @@ def hire_bus(request):
     return render(request, 'hire_bus.html')
 
 def help(request):
-
     return render(request, 'help.html')
 
 def about(request):
@@ -70,48 +111,63 @@ def about(request):
 
 def signup(request):
     if request.method == 'POST':
-        user = request.POST.get('user')
+        username = request.POST.get('user')
         email = request.POST.get('email')
         password = request.POST.get('passw')
         rpass = request.POST.get('pass')
 
+        if not username or not email or not password:
+            messages.error(request, "All fields are required.")
+            return redirect('signup')
+            
         if password != rpass:
             messages.error(request, "Passwords do not match.")
             return redirect('signup')
+        
+        if len(password) < 8:   
+            messages.error(request, "Password must be at least 8 characters long.")
+            return redirect('signup')
 
-        if Signup.objects.filter(user=user).exists():
+        if User.objects.filter(username=username).exists():
             messages.error(request, "Username already taken.")
             return redirect('signup')
 
-        obj = Signup(
-            user=user,
-            pasw=make_password(password),
-            email=email,
-        )
-        obj.save()
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email already registered.")
+            return redirect('signup')
+        
+        User.objects.create_user(username=username, email=email, password=password)
         messages.success(request, "Sign-up successful!")
         return redirect('login')
+    
     return render(request, 'signup.html')
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('index1')
+    
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        try:
-            user_obj = Signup.objects.get(user=username)
-            if check_password(password, user_obj.pasw):
-                request.session['username'] = user_obj.user
+        if not username or not password:
+            messages.error(request, "Both username and password are required.")
+            return redirect('login')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+                auth_login(request, user)  # Log the user in
                 messages.success(request, "Login successful!")
-                return redirect('index1')
-            else:
-                messages.error(request, "Invalid password.")
-        except Signup.DoesNotExist:
-            messages.error(request, "User does not exist.")
+                next_url = request.GET.get('next', 'index1')  # Redirect to 'next' if available, else to 'index1'
+                return redirect(next_url)
+        else:
+            messages.error(request, "Invalid username or password.")
+
+
     return render(request, 'login.html')
 
 
 def logout_view(request):
-    logout(request)  # Clears the session and logs out the user
+    auth_logout(request)  # Clears the session and logs out the user
     messages.success(request, "You have been logged out.")
     return redirect('index1')  

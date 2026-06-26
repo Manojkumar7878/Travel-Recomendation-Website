@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Search Results - HumBus Travels</title>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+<body>
+
+<!-- Navbar (same as index1.html) -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index1' %}">
+            <img src="{% static 'logo/logo_header.png' %}" alt="Bus Logo" width="50"/>
+            <span>HUMBUS TRAVELS</span>
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'index1' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'booking' %}">Book Ticket</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'place_list' %}">Routes</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'help' %}">Help</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" href="#">
+                        {% if user.is_authenticated %}
+                            <span class="me-2">{{ user.username }}</span>
+                        {% endif %}
+                        Account
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% if request.user.is_authenticated %}
+                            <li>
+                                <form action="{% url 'logout' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="dropdown-item" type="submit">Logout</button>
+                                </form>
+                            </li>
+                        {% else %}
+                            <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                            <li><a class="dropdown-item" href="{% url 'signup' %}">Signup</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h3 class="mb-4">Search Results: <span class="text-primary">{{ source }}</span> → <span class="text-primary">{{ destination }}</span> on <span class="text-primary">{{ date }}</span></h3>
+
+    {% if results %}
+        {% for item in results %}
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <h5 class="card-title">{{ item.route.bus_name }}</h5>
+                        <p class="text-muted mb-0">{{ item.route.starting }} → {{ item.route.destination }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small class="text-muted">Departure</small>
+                        <p class="mb-0 fw-bold">{{ item.route.departure_time }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small class="text-muted">Arrival</small>
+                        <p class="mb-0 fw-bold">{{ item.route.arrival_time }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small class="text-muted">Available Seats</small>
+                        <p class="mb-0 fw-bold 
+                            {% if item.available_seats == 0 %}text-danger
+                            {% elif item.available_seats < 10 %}text-warning
+                            {% else %}text-success{% endif %}">
+                            {{ item.available_seats }}
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <small class="text-muted">Price</small>
+                        <p class="mb-0 fw-bold">₹{{ item.route.price }}</p>
+                    </div>
+                    <div class="col-md-1">
+                        {% if item.available_seats > 0 %}
+                            <a href="{% url 'booking' %}?source={{ source }}&destination={{ destination }}&date={{ date }}" 
+                               class="btn btn-primary btn-sm">Book</a>
+                        {% else %}
+                            <button class="btn btn-secondary btn-sm" disabled>Full</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-warning">
+            No buses found from <strong>{{ source }}</strong> to <strong>{{ destination }}</strong> on <strong>{{ date }}</strong>.
+            <a href="{% url 'index1' %}" class="alert-link">Try another search.</a>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

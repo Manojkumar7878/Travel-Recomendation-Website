@@ -19,15 +19,13 @@ from django.urls import path
 from app3 import views
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth import views as auth_views
-from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="index1"),
     path('booking1', (views.booking), name="booking"),
     path('mybooking', (views.mybooking), name="mybooking"),
+    path('search/', views.search_bus, name='search_bus'),
     path('place_list1', views.place_list, name="place_list"),
     path('hire_bus1', (views.hire_bus), name="hire_bus"),
     path('help1', views.help, name="help"),
@@ -37,8 +35,6 @@ urlpatterns = [
     path('updateData/<int:id>', (views.updateData), name='updateData'),
     path('deleteData/<int:id>', (views.deleteData), name='deleteData'),
     path('logout/', views.logout_view, name='logout'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
-
 ]
 
 if settings.DEBUG:
