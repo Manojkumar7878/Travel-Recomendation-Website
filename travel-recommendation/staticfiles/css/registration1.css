@@ -1,0 +1,248 @@
+/* ============================================
+   SIGNUP PAGE - Navy + Orange Theme
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0d1b2a 0%, #1b2d42 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+/* ---- Container ---- */
+.form-container {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+/* ---- Animated Shapes ---- */
+.animation-shapes span {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.12;
+  animation: moveShape 8s infinite ease-in-out;
+}
+
+.shape-one {
+  width: 120px;
+  height: 120px;
+  background: #144da8;
+  top: -40px;
+  left: -40px;
+  animation-delay: 0s;
+}
+
+.shape-two {
+  width: 100px;
+  height: 100px;
+  background: #144da8;
+  bottom: -30px;
+  right: -30px;
+  animation-delay: 4s;
+}
+
+@keyframes moveShape {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(30px, 30px); }
+  50%  { transform: translate(60px, 0); }
+  75%  { transform: translate(30px, -30px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ---- Register Form (left side) ---- */
+.register-form {
+  background: #ffffff;
+  padding: 48px 40px;
+  width: 55%;
+  position: relative;
+}
+
+.heading {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.heading span { color: #144da8; }
+
+/* ---- Input Wrapper ---- */
+.input-wrapper {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 12px 40px 12px 14px;
+  border: 1.5px solid #e0e6ee;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+  background: #f8f9fc;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.input-wrapper input:focus {
+  border-color: #144da8;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+}
+
+.input-wrapper label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  font-size: 0.88rem;
+  color: #aaa;
+  font-weight: 500;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.input-wrapper input:focus + label,
+.input-wrapper input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #144da8;
+  background: #fff;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+.input-wrapper i {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.input-wrapper input:focus ~ i { color: #144da8; }
+
+/* ---- Submit Button ---- */
+.submit-btn {
+  background: #144da8;
+  color: #fff;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.submit-btn:hover {
+  background: #144da8;
+  transform: translateY(-1px);
+}
+
+/* ---- Login Link ---- */
+.login-option {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.88rem;
+  color: #6c757d;
+}
+
+.login-option a {
+  color: #144da8;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.login-option a:hover {
+  color: #144da8;
+  text-decoration: underline;
+}
+
+/* ---- Info Card (right side) ---- */
+.info-card {
+  width: 45%;
+  background: linear-gradient(135deg, #144da8 0%, #144da8 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 36px;
+  text-align: center;
+}
+
+.info-heading {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.info-text {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* ---- Fade In Animation ---- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animation {
+  animation: fadeIn 0.5s ease-out both;
+  animation-delay: calc(var(--i, 0) * 0.1s);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .form-container {
+    flex-direction: column;
+    border-radius: 16px;
+  }
+
+  .register-form,
+  .info-card {
+    width: 100%;
+  }
+
+  .info-card {
+    padding: 32px 24px;
+    order: -1;
+  }
+
+  .info-heading { font-size: 1.2rem; }
+  .register-form { padding: 32px 24px; }
+}
+
+@media (max-width: 480px) {
+  body { padding: 16px; }
+  .heading { font-size: 1.3rem; }
+}

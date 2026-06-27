@@ -1,0 +1,194 @@
+/* ============================================
+   HELP PAGE - Navy + Orange Theme
+   ============================================ */
+
+.help-wrapper {
+  padding: 48px 0 64px;
+  background: #f4f6f9;
+}
+
+.help-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  text-align: center;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.help-title::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: #144da8;
+  border-radius: 2px;
+  margin: 10px auto 40px;
+}
+
+/* ---- FAQ Accordion ---- */
+.accordion-item {
+  border: none;
+  border-radius: 10px !important;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  overflow: hidden;
+}
+
+.accordion-button {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #0d1b2a;
+  background: #ffffff;
+  border-radius: 10px !important;
+  padding: 16px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.accordion-button:not(.collapsed) {
+  background: #0d1b2a;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed)::after {
+  filter: invert(1);
+}
+
+.accordion-button:focus { box-shadow: none; }
+
+.accordion-body {
+  background: #ffffff;
+  font-size: 0.92rem;
+  color: #555;
+  padding: 16px 20px;
+  line-height: 1.7;
+}
+
+/* ---- Support Card ---- */
+.support-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  padding: 36px;
+  margin-top: 40px;
+  border-top: 4px solid #144da8;
+}
+
+.support-card h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  margin-bottom: 8px;
+}
+
+.support-card > p {
+  color: #6c757d;
+  font-size: 0.92rem;
+  margin-bottom: 28px;
+}
+
+.support-item {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.support-item h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.support-item h4::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: #144da8;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.support-item p {
+  font-size: 0.92rem;
+  color: #555;
+  margin: 0;
+}
+
+.support-item a { color: #144da8; text-decoration: none; }
+.support-item a:hover { text-decoration: underline; }
+
+/* ---- Ticket Form ---- */
+.ticket-form { margin-top: 32px; }
+
+.ticket-form h4 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.ticket-form label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 6px;
+}
+
+.ticket-form input,
+.ticket-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border: 1.5px solid #e0e6ee;
+  border-radius: 8px;
+  background: #f8f9fc;
+  color: #333;
+  outline: none;
+  margin-bottom: 18px;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ticket-form input:focus,
+.ticket-form textarea:focus {
+  border-color: #144da8;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(20, 77, 168, 0.1);
+}
+
+.ticket-form button {
+  background: #144da8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 40px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.2s, transform 0.2s;
+  width: 100%;
+}
+
+.ticket-form button:hover {
+  background: #144da8;
+  transform: translateY(-1px);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .help-wrapper { padding: 32px 0 48px; }
+  .help-title { font-size: 1.4rem; }
+  .support-card { padding: 24px 20px; }
+}

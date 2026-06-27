@@ -1,0 +1,243 @@
+/* ============================================
+   PLACE LIST PAGE - Navy + Orange Theme
+   ============================================ */
+
+/* ---- Popular Routes Section ---- */
+.popular-routes {
+  text-align: center;
+  margin-top: 40px;
+  overflow-x: hidden;
+  padding: 0 20px 60px;
+}
+
+.popular-routes .section-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+.popular-routes .section-title::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: #144da8;
+  border-radius: 2px;
+  margin: 10px auto 0;
+}
+
+/* ---- Navbar (matches main theme) ---- */
+.navbar {
+  background: #0d1b2a;
+  padding: 14px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-radius: 0;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.navbar-brand img {
+  border-radius: 50%;
+  border: 2px solid #144da8;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-brand img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 16px rgba(20, 77, 168, 0.5);
+}
+
+.container span {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.container span:hover {
+  color: #144da8;
+  transition: color 0.2s;
+}
+
+.navbar-nav .nav-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #aab4c4 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-right: 4px;
+  padding: 8px 12px !important;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffffff !important;
+  background: rgba(20, 77, 168, 0.15);
+  text-shadow: none;
+}
+
+/* ---- Route Cards ---- */
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0d1b2a;
+  margin-bottom: 32px;
+}
+
+.route-card {
+  background: #ffffff;
+  padding: 16px;
+  text-align: center;
+  margin: 8px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  height: 100%;
+}
+
+.route-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+  background: #ffffff;
+  border-bottom-color: #144da8;
+}
+
+.route-card img {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.route-card h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 14px;
+  color: #0d1b2a;
+  font-style: normal;
+  font-family: 'Poppins', sans-serif;
+}
+
+.route-card h5:hover {
+  color: #144da8;
+}
+
+.route-card p {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6c757d;
+}
+
+/* ---- Grid ---- */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+}
+
+.col-md-4,
+.col-sm-6 {
+  padding: 0 12px;
+  margin-bottom: 24px;
+  flex: 0 0 33.33%;
+  max-width: 33.33%;
+}
+
+/* ---- Footer (matches main theme) ---- */
+footer {
+  background: #0d1b2a;
+  padding: 56px 0 24px;
+  color: #aab4c4;
+  font-size: 0.9rem;
+}
+
+footer h5 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #144da8;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+footer p {
+  color: #8899aa;
+  line-height: 1.8;
+  margin-bottom: 6px;
+  font-size: 0.88rem;
+}
+
+footer a {
+  color: #8899aa;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: #144da8;
+  text-decoration: none;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li { margin-bottom: 10px; }
+
+.footer-links a {
+  color: #8899aa;
+  font-size: 0.88rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: #144da8; }
+
+.footer-divider {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin: 32px 0 20px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .col-md-4, .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  footer { text-align: center; padding: 40px 0 20px; }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .popular-routes .section-title { font-size: 1.4rem; }
+}
+
+@media (max-width: 480px) {
+  .col-md-4, .col-sm-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
