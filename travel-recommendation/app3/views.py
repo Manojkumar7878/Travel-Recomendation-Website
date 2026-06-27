@@ -90,9 +90,11 @@ def updateData(request, id):
 
 @login_required
 def deleteData(request, id):
-    mydata = get_object_or_404(Datas, id=id, user=request.user)
-    mydata.delete()
-    messages.success(request, "Booking deleted successfully!")
+    if request.method == 'POST':
+        mydata = get_object_or_404(Datas, id=id, user=request.user)
+        mydata.delete()
+        messages.success(request, "Booking deleted successfully!")
+        return redirect('booking')
     return redirect('booking')
 
 def place_list(request):

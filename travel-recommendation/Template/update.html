@@ -1,56 +1,133 @@
 {% extends 'index1.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
 {% block content %}
 
+<style>
+  body { background: #f4f6f9; }
 
+  .update-wrapper {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 16px;
+  }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/update.css' %}">
-    <title>Update</title>
-</head>
-<body>
-    {% load django_bootstrap5 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+  .update-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+  }
 
+  .update-card h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    border-left: 4px solid #0d6efd;
+    padding-left: 12px;
+    margin-bottom: 28px;
+  }
 
-        <div class="form-group text-center mt-5">
-            <form action="/updateData/{{data.id}}" method="POST" class="form-horizontal">
-                {% csrf_token %}
-                <h3 class="page-header text-center">Update Details</h3>
-                <div class="form-group">
-                    <label for="depature" class="control-label">Depature</label>
-                    <input type="text" name="departure" class="form-control" value="{{data.starting}}">
-                </div>
-                <div class="form-group">
-                    <label for="arraival" class="control-label">Arraival</label>
-                    <input type="text" name="arraival" class="form-control" value="{{data.destination}}">
-                </div>
-                <div class="form-group">
-                    <label for="date" class="control-label">Date of Travel</label>
-                    <input type="date" name="date" class="form-control" value="{{data.date}}">
-                </div>
-                <div class="form-group">
-                    <label for="time" class="control-label">Time</label>
-                    <input type="time" name="time" class="form-control" value="{{data.time}}">
-                </div>
-                <div class="form-group">
-                    <label for="seat" class="control-label">Seat Number</label>
-                    <input type="text" name="seat" class="form-control" value="{{data.seat}}">
-                </div>
-                <div class="form-group">
-                    <label for="name" class="control-label">Passenger Name</label>
-                    <input type="text" name="name" class="form-control" value="{{data.name}}"> 
-                </div>
-                    <input type="submit" name="id" class="btn btn-primary" value="update">
-                    <input type="button" name="id" class="btn btn-primary" onclick="history.back() " value="Back">
-            </form>
+  .form-label {
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  .form-control {
+    border-radius: 8px;
+    border: 1.5px solid #dee2e6;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+
+  .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13,110,253,0.1);
+  }
+
+  .btn-update {
+    background: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 32px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+
+  .btn-update:hover { background: #0b5ed7; }
+
+  .btn-back {
+    background: #fff;
+    color: #555;
+    border: 1.5px solid #dee2e6;
+    border-radius: 8px;
+    padding: 11px 32px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-back:hover { background: #f4f6f9; }
+</style>
+
+<div class="update-wrapper">
+  <div class="update-card">
+    <h2>Update Booking</h2>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show mb-3">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
-</body>
-</html>
+      {% endfor %}
+    {% endif %}
+
+    <form action="{% url 'updateData' data.id %}" method="POST">
+      {% csrf_token %}
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">From</label>
+          <input type="text" name="departure" class="form-control" value="{{ data.starting }}" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">To</label>
+          <input type="text" name="arraival" class="form-control" value="{{ data.destination }}" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Date of Travel</label>
+          <input type="date" name="date" class="form-control" value="{{ data.date }}" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Time</label>
+          <input type="time" name="time" class="form-control" value="{{ data.time }}" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Seat Number</label>
+          <input type="text" name="seat" class="form-control" value="{{ data.seat }}" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Passenger Name</label>
+          <input type="text" name="name" class="form-control" value="{{ data.name }}" required>
+        </div>
+        <div class="col-12 d-flex gap-3 justify-content-center mt-3">
+          <button type="submit" class="btn-update">Update Booking</button>
+          <button type="button" class="btn-back" onclick="history.back()">← Back</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 
 {% endblock %}
