@@ -5,6 +5,9 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Datas, Place, BusRoute
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
+from .serializers import BusRouteSerializer, BookingSerializer, PlaceSerializer
 
 
 
@@ -173,3 +176,19 @@ def logout_view(request):
     auth_logout(request)  # Clears the session and logs out the user
     messages.success(request, "You have been logged out.")
     return redirect('index1')  
+
+
+class BusRouteViewSet(viewsets.ModelViewSet):
+    queryset = BusRoute.objects.all()
+    serializer_class = BusRouteSerializer
+
+class BookingViewSet(viewsets.ModelViewSet):
+    serializer_class = BookingSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_queryset(self):
+        return Datas.objects.filter(user=self.request.user)
+
+class PlaceViewSet(viewsets.ModelViewSet):
+    queryset = Place.objects.all()
+    serializer_class = PlaceSerializer

@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app3',
-    'django_bootstrap5'
+    'django_bootstrap5',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -82,10 +83,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 DATABASE_URL = os.environ.get('DATABASE_URL')
+
 if DATABASE_URL:
     DATABASES = {
         'default': dj_database_url.parse(DATABASE_URL)
+    }
+    # Tell Postgres to look in the 'django' schema first, then fall back to 'public'
+    DATABASES['default']['OPTIONS'] = {
+        'options': '-c search_path=django,public'
     }
 else:
     DATABASES = {
@@ -132,7 +139,7 @@ USE_TZ = True
 
 STATIC_URL  = 'static/'
 STATICFILES_DIRS=[ BASE_DIR / "static"]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'     
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR/ 'media'
